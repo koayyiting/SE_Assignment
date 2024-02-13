@@ -28,18 +28,5 @@ namespace ConsoleApp3
         {
             return parkingChargeStrategy.calculateCharge(record, vehicleTypeRates);
         }
-
-        public void UpdateVehicleTypeRates(double rate)
-        {
-            vehicleTypeRates = rate;
-        }
-
-
-        // ToString
-        // Get details of the parking charge strategy
-        public string GetChargeDetails()
-        {
-            return $"Vehicle Type Rates: {vehicleTypeRates}"; 
-        }
     }
 }
