@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp3
 {
@@ -6,19 +7,19 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
+            List<Dictionary<string, object>> applicants = new List<Dictionary<string, object>>();
+
             while (true)
             {
-
                 int option;
 
                 displayMenu();
                 Console.Write("Enter your option: ");
                 option = Convert.ToInt32(Console.ReadLine());
 
-
                 if (option == 1)
                 {
-                    Console.WriteLine("Process Season Pass");
+                    ManageParkingApplications(applicants);
                 }
                 else if (option == 2)
                 {
@@ -35,7 +36,6 @@ namespace ConsoleApp3
                 else if (option == 5)
                 {
                     Console.WriteLine("Terminate Season Pass");
-                    //pass.State.Terminate(pass);
                 }
                 else if (option == 0)
                 {
@@ -45,9 +45,7 @@ namespace ConsoleApp3
                 {
                     Console.WriteLine("Please enter a valid input");
                 }
-
             }
-
         }
 
         static void Apply()
@@ -89,19 +87,78 @@ namespace ConsoleApp3
             Console.WriteLine("\nThank you for your submission!");
         }
 
-        public static void displayMenu()
+        static void ManageParkingApplications(List<Dictionary<string, object>> applicants)
         {
-            Console.WriteLine("\n---------------- M E N U --------------------");
-            Console.WriteLine("[1] Process Season Pass");
-            Console.WriteLine("[2] Apply Season Pass");
-            Console.WriteLine("[3] Renew Season Pass");
-            Console.WriteLine("[4] Transfer Season Pass");
-            Console.WriteLine("[5] Terminate Season Pass");
-            Console.WriteLine("[0] Exit");
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("Administrator Parking Management System");
+
+            // Sample data for simulation
+            applicants.Add(new Dictionary<string, object>()
+            {
+                {"Name", "John Doe"},
+                {"Student/Staff ID", "S12345"},
+                {"Username", "johndoe"},
+                {"Password", "password123"},
+                {"Mobile number", 1234567890},
+                {"Start month", new DateTime(2024, 2, 1)},
+                {"End month", new DateTime(2024, 3, 1)},
+                {"Payment mode", "credit"},
+                {"License plate number", "ABC123"},
+                {"IU number", "IU456"},
+                {"Vehicle Type", "Car"}
+            });
+
+            applicants.Add(new Dictionary<string, object>()
+            {
+                {"Name", "Guo Jun"},
+                {"Student/Staff ID", "S10227742"},
+                {"Username", "Guo Jun"},
+                {"Password", "password123"},
+                {"Mobile number", 1234567890},
+                {"Start month", new DateTime(2024, 2, 1)},
+                {"End month", new DateTime(2024, 3, 1)},
+                {"Payment mode", "credit"},
+                {"License plate number", "SPF123"},
+                {"IU number", "IU456"},
+                {"Vehicle Type", "Car"}
+            });
+
+            // Display list of applications
+            Console.WriteLine("List of Applications:");
+            for (int i = 0; i < applicants.Count; i++)
+            {
+                Console.WriteLine($"Application {i + 1}:");
+                foreach (var kvp in applicants[i])
+                {
+                    Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+                }
+                Console.WriteLine();
+            }
+
+            // Prompt to choose an application
+            Console.Write("Choose an application (enter application number): ");
+            int appIndex = Convert.ToInt32(Console.ReadLine()) - 1;
+
+            // Admin approve the application
+            Console.WriteLine("Application approved.");
+
+            // Generate a unique season parking pass number
+            string uniquePassNumber = GenerateUniquePassNumber();
+            Console.WriteLine($"Unique Season Parking Pass Number: {uniquePassNumber}");
+
+            // Update pass status to "valid" for the applied period
+            // (Not implemented in this simplified version)
+
+            Console.WriteLine("Use case end.");
         }
 
-        // Functions
+        static void SubmitApplication(string passType, string name, string studentOrStaffID, string username, string password, int mobileNumber, DateTime startMonth, DateTime endMonth, string paymentMode, string licensePlateNumber, string iuNumber, string vehicleType)
+        {
+            Console.WriteLine("\nSubmitting Application...");
+            // Here you would typically submit the application details to a database or API
+
+            // Additional processing can be done here, such as sending confirmation emails or messages
+        }
+
         static void DisplaySeasonPassOptions()
         {
             Console.WriteLine("Select your desired Season Parking Pass:");
@@ -123,34 +180,6 @@ namespace ConsoleApp3
             return Console.ReadLine();
         }
 
-        static void SubmitApplication(string passType, string name, string studentOrStaffID, string username, string password, int mobileNumber, DateTime startMonth, DateTime endMonth, string paymentMode, string licensePlateNumber, string iuNumber, string vehicleType)
-        {
-            Console.WriteLine("\nSubmitting Application...");
-            // Here you would typically submit the application details to a database or API
-
-            
-            // Create user applying for season parking
-            User user = new User(name, studentOrStaffID, username, password, mobileNumber, startMonth, endMonth);
-
-            // Apply for Season Parking by calling User class 
-            // Apply for season parking
-            if (user.ApplyForSeasonParking() != "Failed" && user.ApplyForSeasonParking() != "Monthly Pass Unavaliable")
-            {
-                // If application is successful, print the unique pass number
-                Console.WriteLine("Season Parking Pass Applied Successfully!");
-                Console.WriteLine("Unique Pass Number: " + user.SeasonParkingPass.UniquePassNumber);
-            }
-            else
-            {
-                // If application is unsuccessful, print a message
-                Console.WriteLine("Failed to apply for Season Parking Pass.");
-            }
-
-            //Console.WriteLine("Application submitted successfully!");
-            // Additional processing can be done here, such as sending confirmation emails or messages
-        }
-
-        // Make Payment use case (simple depiction of MakePayment use case, not exhaustive)
         static void MakePayment()
         {
             string input;
@@ -171,7 +200,6 @@ namespace ConsoleApp3
             }
         }
 
-        // Front-end user input validation 
         static string GetValidInput(string prompt)
         {
             string input;
@@ -205,6 +233,25 @@ namespace ConsoleApp3
                 input = Console.ReadLine();
             } while (!DateTime.TryParse(input, out result)); // Validates for DateTime input
             return result;
+        }
+
+        static string GenerateUniquePassNumber()
+        {
+            // This is a simplified method to generate a unique pass number
+            // You can replace this with your own logic to generate unique numbers
+            return Guid.NewGuid().ToString();
+        }
+
+        public static void displayMenu()
+        {
+            Console.WriteLine("\n---------------- M E N U --------------------");
+            Console.WriteLine("[1] Process Season Pass");
+            Console.WriteLine("[2] Apply Season Pass");
+            Console.WriteLine("[3] Renew Season Pass");
+            Console.WriteLine("[4] Transfer Season Pass");
+            Console.WriteLine("[5] Terminate Season Pass");
+            Console.WriteLine("[0] Exit");
+            Console.WriteLine("---------------------------------------------");
         }
     }
 }
