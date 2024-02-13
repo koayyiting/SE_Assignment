@@ -16,7 +16,7 @@ namespace ConsoleApp3
         // Associations
         private CarPark carPark; // One ParkingRecord belongs to one CarPark
         private ParkingChargeStrategy parkingChargeStrategy; // One ParkingRecord has one ParkingChargeStrategy
-        private MonthlyFinancialReport monthlyFinancialReport; // One ParkingRecord has one MonthlyFinancialReport
+        //private MonthlyFinancialReport monthlyFinancialReport; // One ParkingRecord has one MonthlyFinancialReport
 
         // Association: One ParkingRecord can have 0 or more User_ParkingRecord
         private List<User_ParkingRecord> user_ParkingRecords;
