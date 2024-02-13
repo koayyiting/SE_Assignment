@@ -406,12 +406,13 @@ namespace ConsoleApp3
 
         public static void displayMenu()
         {
-            Console.WriteLine("\n---------------- M E N U --------------------");
+            Console.WriteLine("\n------------------ M E N U ------------------");
             Console.WriteLine("[1] Process Season Pass");
             Console.WriteLine("[2] Apply Season Pass");
             Console.WriteLine("[3] Renew Season Pass");
             Console.WriteLine("[4] Transfer Season Pass");
             Console.WriteLine("[5] Terminate Season Pass");
+            Console.WriteLine("[6] Strategy Design Pattern - Parking Charges");
             Console.WriteLine("[0] Exit");
             Console.WriteLine("---------------------------------------------");
         }

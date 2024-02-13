@@ -8,7 +8,7 @@ namespace ConsoleApp3
     {
         public double calculateCharge(ParkingRecord record, double vehicleTypeRates)
         {
-            Console.WriteLine("Monthly Season Pass can exit wihtout payment.");
+            Console.WriteLine("Monthly Season Pass can exit without payment.");
             return 0.0;
         }
     }
