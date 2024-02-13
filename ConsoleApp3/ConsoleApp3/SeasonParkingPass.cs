@@ -6,20 +6,20 @@ namespace ConsoleApp3
     public class SeasonParkingPass
     {
         // Temporaily code <-- to be updated
-        //public enum PassStatus
-        //{
-        //    Valid,
-        //    Parked,
-        //    Exited,
-        //    Expired,
-        //    Terminated
-        //}
+        public enum PassStatus
+        {
+            Valid,
+            Parked,
+            Exited,
+            Expired,
+            Terminated
+        }
 
-        //public enum PassType
-        //{
-        //    Monthly,
-        //    Daily
-        //}
+        public enum PassType
+        {
+            Monthly,
+            Daily
+        }
 
         private string uniquePassNumber;
         private DateTime startMonth;
@@ -33,10 +33,10 @@ namespace ConsoleApp3
         public string UniquePassNumber { get; set; }
         public DateTime StartMonth { get; set; }
         public DateTime EndMonth { get; set; }
-        public string Status { get; set; }
-        //public PassStatus Status { get; set; }
-        //public PassType Type { get; set; }
-        public string Type { get; set; }
+        //public string Status { get; set; }
+        public PassStatus Status { get; set; }
+        public PassType Type { get; set; }
+        //public string Type { get; set; }
         public User AssociatedUser { get; set; }
         public Vehicle AssociatedVehicle { get; set; }
 
@@ -47,16 +47,8 @@ namespace ConsoleApp3
         public SPState ExpiredState { get; set; }
         public SPState State { get; set; }
 
-        public SeasonParkingPass(string upn, DateTime sm, DateTime em, string s, string t, User u, Vehicle v)
+        public SeasonParkingPass()
         {
-            UniquePassNumber = upn;
-            StartMonth = sm;
-            EndMonth = em;
-            Status = s;
-            Type = t;
-            AssociatedUser = u;
-            AssociatedVehicle = v;
-
             ValidState = new ValidState(this);
             ExpiredState = new ExpiredState(this);
             TerminatedState = new TerminatedState(this);
