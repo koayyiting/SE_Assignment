@@ -125,5 +125,24 @@ namespace ConsoleApp3
             set { seasonParkingPass = value; }
         }
 
+        public SeasonParkingPass GetSeasonParkingPass()
+        {
+            // Generate a unique pass number
+            string uniquePassNumber = "PASS-" + Guid.NewGuid().ToString().Substring(0, 6); // Generate a unique 6-character pass number
+
+            // Create a new season parking pass for the user
+            SeasonParkingPass userSeasonParkingPass = new SeasonParkingPass
+            {
+                UniquePassNumber = uniquePassNumber,
+                StartMonth = startMonth,
+                EndMonth = endMonth,
+                Status = SeasonParkingPass.PassStatus.Valid,
+                Type = SeasonParkingPass.PassType.Monthly,
+                AssociatedUser = this
+                // You may set other attributes of the season parking pass here
+            };
+            return userSeasonParkingPass;
+        }
+
     }
 }

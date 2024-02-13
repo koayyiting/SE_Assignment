@@ -41,10 +41,12 @@ namespace ConsoleApp3
         public Vehicle AssociatedVehicle { get; set; }
 
         // State Settings:
-        private SPState validState, terminatedState, expiredState, state;
+        private SPState validState, terminatedState, expiredState, exitedState, parkedState, state;
         public SPState ValidState { get; set; }
         public SPState TerminatedState { get; set; }
         public SPState ExpiredState { get; set; }
+        public SPState ExitedState { get; set; }
+        public SPState ParkedState { get; set; }
         public SPState State { get; set; }
 
         public SeasonParkingPass()
@@ -52,6 +54,8 @@ namespace ConsoleApp3
             ValidState = new ValidState(this);
             ExpiredState = new ExpiredState(this);
             TerminatedState = new TerminatedState(this);
+            ExitedState = new ExitedState(this);
+            ParkedState = new ParkedState(this);
 
             State = ValidState;
         }

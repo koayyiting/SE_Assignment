@@ -17,16 +17,17 @@ namespace ConsoleApp3
         {
             // System checking for user’s season pass
             Console.WriteLine("Checking for season pass");
-            //if (pass.Status == "asdnh" || pass.Status == "expired")
-            //{
-            //    // System display No Season Pass to terminate. 
-            //    Console.WriteLine("You do not have a Season Pass");
+            if (pass.Status == SeasonParkingPass.PassStatus.Terminated || pass.Status == SeasonParkingPass.PassStatus.Expired)
+            {
+                // System display No Season Pass to terminate. 
+                Console.WriteLine("You do not have a Season Pass");
 
-            //    // End Use Case
-            //    return;
-            //}
+                // End Use Case
+                return;
+            }
 
             // System display user’s daily season pass
+            Console.WriteLine("\nSeason Pass Details:");
             Console.WriteLine("Unique Pass Number: " + pass.UniquePassNumber);
             Console.WriteLine("Start Month: " + pass.StartMonth);
             Console.WriteLine("End Month: " + pass.EndMonth);
@@ -55,26 +56,26 @@ namespace ConsoleApp3
                     // User enters termination reason
                     Console.ReadLine();
 
-                    //if (pass.Type == "daily")
-                    //{
-                    //    // System display message daily pass to be terminated 
-                    //    Console.WriteLine("Daily Pass to be terminated..");
+                    if (pass.Type == SeasonParkingPass.PassType.Daily)
+                    {
+                        // System display message daily pass to be terminated 
+                        Console.WriteLine("Daily Pass to be terminated..");
 
-                    //}
-                    //else if (pass.Type == "monthly")
-                    //{
-                    //    // System checks for the months left
-                    //    int monthsLeft = ((pass.StartMonth.Year - DateTime.Now.Year) * 12) + pass.EndMonth.Month - DateTime.Now.Month;
+                    }
+                    else if (pass.Type == SeasonParkingPass.PassType.Monthly)
+                    {
+                        // System checks for the months left
+                        int monthsLeft = ((pass.StartMonth.Year - DateTime.Now.Year) * 12) + pass.EndMonth.Month - DateTime.Now.Month;
 
-                    //    // System calculates refund amount.
-                    //    double refundAmt = monthsLeft * 50; // I need a monthly season price for this
+                        // System calculates refund amount.
+                        double refundAmt = monthsLeft * 50; // I need a monthly season price for this
 
-                    //    // System refunds amount to ICTP User.
-                    //    refundPayment(refundAmt);
+                        // System refunds amount to ICTP User.
+                        refundPayment(refundAmt);
 
-                    //    // System display message daily pass to be terminated.
-                    //    Console.WriteLine("Daily Pass to be terminated..");
-                    //}
+                        // System display message daily pass to be terminated.
+                        Console.WriteLine("Monthly Pass to be terminated..");
+                    }
                 }
                 else if (terminate == 2)
                 {
@@ -88,7 +89,7 @@ namespace ConsoleApp3
                 }
 
                 // System updates parking pass status to “terminated”
-                //pass.Status = "terminated";
+                pass.Status = SeasonParkingPass.PassStatus.Terminated;
                 pass.State = pass.TerminatedState;
 
                 // End Use Case

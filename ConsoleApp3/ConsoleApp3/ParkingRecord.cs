@@ -13,22 +13,29 @@ namespace ConsoleApp3
         private int seasonPassType = -1; //  "-1, 0, 1", representing "No pass, Daily Pass, Monthly Pass"
         private double amountCharged;
 
+        public string UniqueParkingNumber { get; set; }
+        public string VehicleType { get; set; }
+        public DateTime EntryDateTime { get; set; }
+        public DateTime ExitDateTime { get; set; }
+        public int SeasonPassType { get; set; }
+        public double AmountCharged { get; set; }
+
         // Associations
         private CarPark carPark; // One ParkingRecord belongs to one CarPark
-        private ParkingChargeStrategy parkingChargeStrategy; // One ParkingRecord has one ParkingChargeStrategy
-        //private MonthlyFinancialReport monthlyFinancialReport; // One ParkingRecord has one MonthlyFinancialReport
+        private ParkingCharge parkingCharge; // One ParkingRecord has one ParkingChargeStrategy
 
         // Association: One ParkingRecord can have 0 or more User_ParkingRecord
         private List<User_ParkingRecord> user_ParkingRecords;
 
         // Constructor
-        public ParkingRecord(string uniqueParkingNumber, DateTime entryDateTime, DateTime exitDateTime, string vehicleType, int seasonPassType)
+        public ParkingRecord(string upn, DateTime enDT, DateTime exDT, string vt, int spt, double ac)
         {
-            this.uniqueParkingNumber = uniqueParkingNumber;
-            this.entryDateTime = entryDateTime;
-            this.exitDateTime = exitDateTime;
-            this.vehicleType = vehicleType;
-            this.seasonPassType = seasonPassType;
+            UniqueParkingNumber = upn;
+            EntryDateTime = enDT;
+            ExitDateTime = exDT;
+            VehicleType = vt;
+            SeasonPassType = spt;
+            AmountCharged = ac;
             this.user_ParkingRecords = new List<User_ParkingRecord>();
         }
 
@@ -53,13 +60,9 @@ namespace ConsoleApp3
         private double CalculateParkingCharge(DateTime entryDateTime, DateTime exitDateTime)
         {
             // Check if ParkingChargeStrategy is set
-            if (parkingChargeStrategy != null)
+            if (parkingCharge != null)
             {
-                // Calculate the number of hours parked
-                double hoursParked = (exitDateTime - entryDateTime).TotalHours;
-
-                // Call CalculateCharge method from ParkingChargeStrategy with hoursParked parameter
-                return parkingChargeStrategy.CalculateCharge(hoursParked);
+                return parkingCharge.calculateCharge(this);
             }
             else
             {

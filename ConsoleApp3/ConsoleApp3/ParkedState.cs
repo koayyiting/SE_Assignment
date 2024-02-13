@@ -4,11 +4,11 @@ using System.Text;
 
 namespace ConsoleApp3
 {
-    public class ExitedState : SPState
+    public class ParkedState : SPState
     {
         // System retrieve for user’s season pass
         SeasonParkingPass pass;
-        public ExitedState(SeasonParkingPass p)
+        public ParkedState(SeasonParkingPass p)
         {
             pass = p;
         }
@@ -105,10 +105,10 @@ namespace ConsoleApp3
         {
             throw new NotImplementedException();
         }
-
         public void refundPayment(double refundAmt)
         {
             Console.WriteLine("Refunding Remaining Months Payment: $" + refundAmt);
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp3
 {
@@ -34,8 +35,53 @@ namespace ConsoleApp3
                 }
                 else if (option == 5)
                 {
-                    Console.WriteLine("Terminate Season Pass");
+                    User user_monthly = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1));
+                    SeasonParkingPass userSeasonPass_monthly = user_monthly.GetSeasonParkingPass();
+
+                    User user_daily = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1));
+                    SeasonParkingPass userSeasonPass_daily = user_daily.GetSeasonParkingPass();
+                    userSeasonPass_daily.Type = SeasonParkingPass.PassType.Daily;
+
+                    Terminate(userSeasonPass_monthly, userSeasonPass_daily);
                     //pass.State.Terminate(pass);
+                }
+                else if (option == 6)
+                {
+                    // sample records - [No pass: -1, Daily Pass: 0, Monthly Pass: 1]
+                    while (true)
+                    {
+                        displayMenu_Charge();
+                        int chargeOption;
+
+                        Console.Write("Enter your option: ");
+                        chargeOption = Convert.ToInt32(Console.ReadLine());
+
+                        if (chargeOption == 1)
+                        {
+                            ParkingRecord record = new ParkingRecord("12345678", new DateTime(2024, 2, 13, 7, 30, 0), new DateTime(2024, 2, 13, 17, 30, 0), "Car", 1, 0);
+                            parkigCharge(record);
+                        }
+                        else if (chargeOption == 2)
+                        {
+                            ParkingRecord record = new ParkingRecord("12345678", new DateTime(2024, 2, 13, 9, 30, 0), new DateTime(2024, 2, 13, 20, 30, 0), "Motorbike", 0, 0);
+                            parkigCharge(record);
+                        }
+                        else if (chargeOption == 3)
+                        {
+                            ParkingRecord record = new ParkingRecord("12345678", new DateTime(2024, 2, 13, 15, 30, 0), new DateTime(2024, 2, 13, 21, 30, 0), "Truck", -1, 0);
+                            parkigCharge(record);
+                        }
+                        else if (chargeOption == 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please enter a valid input.");
+                        }
+                  
+                    }
+
                 }
                 else if (option == 0)
                 {
@@ -97,6 +143,7 @@ namespace ConsoleApp3
             Console.WriteLine("[3] Renew Season Pass");
             Console.WriteLine("[4] Transfer Season Pass");
             Console.WriteLine("[5] Terminate Season Pass");
+            Console.WriteLine("[6] Strategy Design Pattern - Parking Charge");
             Console.WriteLine("[0] Exit");
             Console.WriteLine("---------------------------------------------");
         }
@@ -205,6 +252,121 @@ namespace ConsoleApp3
                 input = Console.ReadLine();
             } while (!DateTime.TryParse(input, out result)); // Validates for DateTime input
             return result;
+        }
+
+        // Option 5: Terminate Season Pass
+        public static void displayMenu_Terminate()
+        {
+            Console.WriteLine("\n------------ Terminate Pass Type ------------");
+            Console.WriteLine("[1] Monthly Season Pass");
+            Console.WriteLine("[2] Daily Season Pass");
+            Console.WriteLine("[0] Back");
+            Console.WriteLine("---------------------------------------------");
+        }
+
+        public static void Terminate(SeasonParkingPass userSeasonPass_monthly, SeasonParkingPass userSeasonPass_daily)
+        {
+            while (true)
+            {
+                int option;
+
+                displayMenu_Terminate();
+                Console.Write("Enter your option: ");
+                option = Convert.ToInt32(Console.ReadLine());
+
+                if (option == 1)
+                {
+                    userSeasonPass_monthly.State.Terminate(userSeasonPass_monthly);
+                }
+                else if (option == 2)
+                {
+                    userSeasonPass_daily.State.Terminate(userSeasonPass_daily);
+                }
+                else if (option == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid input.");
+                }
+            }
+        }
+
+        // Option 6: Strategy Design Pattern - Parking Charges
+        public static void displayMenu_Charge()
+        {
+            Console.WriteLine("\n---------- Strategy Design Pattern ----------");
+            Console.WriteLine("[1] Monthly Season Pass Charge");
+            Console.WriteLine("[2] Daily Season Pass Charge");
+            Console.WriteLine("[3] Per Min Charge");
+            Console.WriteLine("[0] Back");
+            Console.WriteLine("---------------------------------------------");
+        }
+
+        public static double calculate(ParkingRecord record)
+        {
+
+            var vehicleCharges_minute = new Dictionary<string, double>
+            {
+                { "Car", 0.03 },
+                { "Motorbike", 0.02 },
+                { "Truck", 0.06 },
+                { "Bus", 0.1 }
+            };
+
+            var vehicleCharges_limit = new Dictionary<string, double>
+            {
+                { "Car", 25 },
+                { "Motorbike", 10 },
+                { "Truck", 50 },
+                { "Bus", 70 }
+            };
+
+            if (record.SeasonPassType == 1)
+            {
+                Season_Pass_Monthly monthlyStrategy = new Season_Pass_Monthly();
+                ParkingCharge pc = new ParkingCharge(monthlyStrategy, 0);
+                return pc.calculateCharge(record);
+            }
+            else if (record.SeasonPassType == 0)
+            {
+                double limit = vehicleCharges_limit[record.VehicleType];
+                double rate = vehicleCharges_minute[record.VehicleType];
+
+                Season_Pass_Daily dailyStrategy = new Season_Pass_Daily(limit);
+                ParkingCharge pc = new ParkingCharge(dailyStrategy, rate);
+                return pc.calculateCharge(record);
+            }
+            else if (record.SeasonPassType == -1)
+            {
+                double rate = vehicleCharges_minute[record.VehicleType];
+
+                PerMinuteCharge perMinCharge = new PerMinuteCharge();
+                ParkingCharge pc = new ParkingCharge(perMinCharge, rate);
+                return pc.calculateCharge(record);
+            }
+            return -1;
+                
+        }
+
+        public static void parkigCharge(ParkingRecord record)
+        {
+            Console.WriteLine("\nParking Record Details:");
+            Console.WriteLine("Unique Pass Number: " + record.UniqueParkingNumber);
+            Console.WriteLine("Entry Time: " + record.EntryDateTime);
+            Console.WriteLine("Exit Time: " + record.ExitDateTime);
+            Console.WriteLine("Vehicle Type: " + record.VehicleType);
+            Console.WriteLine();
+            double amt = calculate(record);
+            if (amt == -1)
+            {
+                Console.WriteLine("Error in Calculate Parking Charge Function");
+            }
+            else
+            {
+                Console.WriteLine("Total Amount Charged upon exit from campus: $" + amt.ToString("F2"));
+            }
         }
     }
 }
