@@ -12,9 +12,10 @@ namespace ConsoleApp3
         {
             pass = p;
         }
-        public void Renew(SeasonParkingPass context)
+        public void Renew(SeasonParkingPass userPass)
         {
-            throw new NotImplementedException();
+            //Alternate Flow Step 2
+            Console.WriteLine("Season pass has already expired.");
         }
 
         public void Terminate(SeasonParkingPass context)

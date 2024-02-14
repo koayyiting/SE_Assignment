@@ -9,6 +9,20 @@ namespace ConsoleApp3
         {
             List<Dictionary<string, object>> applicants = new List<Dictionary<string, object>>();
 
+            DateTime date1 = new DateTime(2012, 12, 25, 10, 30, 50);
+            DateTime date2 = new DateTime(2012, 12, 25, 11, 45, 10);
+            User student = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Student");
+            SeasonParkingPass userPass = student.GetSeasonParkingPass();
+            Vehicle vehicle = new Vehicle("SCA123B", "12345678", "Car");
+
+            User user_monthly = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
+            SeasonParkingPass userSeasonPass_monthly = user_monthly.GetSeasonParkingPass();
+
+            User user_daily = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
+            SeasonParkingPass userSeasonPass_daily = user_daily.GetSeasonParkingPass();
+            userSeasonPass_daily.Type = SeasonParkingPass.PassType.Daily;
+
+
             while (true)
             {
                 int option;
@@ -27,28 +41,16 @@ namespace ConsoleApp3
                 }
                 else if (option == 3)
                 {
-                    Console.WriteLine("Renew Season Pass");
+                    userPass.State.Renew(userPass);
                 }
                 else if (option == 4)
                 {
-                    DateTime date1 = new DateTime(2012, 12, 25, 10, 30, 50);
-                    DateTime date2 = new DateTime(2012, 12, 25, 11, 45, 10);
-                    User student = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Student");
-                    Vehicle vehicle = new Vehicle("SCA123B", "12345678", "Car");
-                    SeasonParkingPass userPass = student.GetSeasonParkingPass();
                     userPass.AssociatedVehicle = vehicle;
 
                     userPass.State.Transfer(userPass);
                 }
                 else if (option == 5)
                 {
-                    User user_monthly = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
-                    SeasonParkingPass userSeasonPass_monthly = user_monthly.GetSeasonParkingPass();
-
-                    User user_daily = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
-                    SeasonParkingPass userSeasonPass_daily = user_daily.GetSeasonParkingPass();
-                    userSeasonPass_daily.Type = SeasonParkingPass.PassType.Daily;
-
                     Terminate(userSeasonPass_monthly, userSeasonPass_daily);
                 }
                 else if (option == 6)
@@ -92,15 +94,15 @@ namespace ConsoleApp3
                 else if (option == 7)
                 {
                     // sample data
-                    DateTime date1 = new DateTime(2012, 12, 25, 10, 30, 50);
-                    DateTime date2 = new DateTime(2012, 12, 25, 11, 45, 10);
+                    date1 = new DateTime(2012, 12, 25, 10, 30, 50);
+                    date2 = new DateTime(2012, 12, 25, 11, 45, 10);
                     ParkingRecord pr1 = new ParkingRecord("1234", date1, date2, "monster truck", -1, 30);
                     ParkingRecord pr2 = new ParkingRecord("1235", date1, date2, "monster truck", -1, 50);
                     ParkingRecord pr3 = new ParkingRecord("1236", date1, date2, "monster truck", -1, 60);
                     ParkingRecord pr4 = new ParkingRecord("1237", date1, date2, "monster truck", -1, 20);
                     ParkingRecord pr5 = new ParkingRecord("1238", date1, date2, "monster truck", -1, 52);
                     User staff = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Staff");
-                    User student = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Student");
+                    student = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Student");
                     User_ParkingRecord upr1 = new User_ParkingRecord(staff, pr1, date1, date2);
                     User_ParkingRecord upr2 = new User_ParkingRecord(student, pr2, date1, date2);
                     User_ParkingRecord upr3 = new User_ParkingRecord(staff, pr3, date1, date2);

@@ -14,7 +14,7 @@ namespace ConsoleApp3
         }
         public void Renew(SeasonParkingPass context)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Your pass has already been terminated.");
         }
 
         public void Terminate(SeasonParkingPass context)

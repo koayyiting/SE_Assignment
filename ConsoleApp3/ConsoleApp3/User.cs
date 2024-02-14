@@ -6,16 +6,6 @@ namespace ConsoleApp3
     public class User
     {
         //Attributes
-        private string name;
-        private string userID;
-        private string username;
-        private string password;
-        private int mobileNumber;
-        private DateTime startMonth;
-        private DateTime endMonth;
-        private string paymentMode = "credit";
-        private string userType;
-
         public string Name { get; set; }
         public string UserID { get; set; }
         public string Username { get; set; }
@@ -76,8 +66,8 @@ namespace ConsoleApp3
             SeasonParkingPass newSeasonParkingPass = new SeasonParkingPass
             {
                 UniquePassNumber = uniquePassNumber,
-                StartMonth = startMonth,
-                EndMonth = endMonth,
+                StartMonth = StartMonth,
+                EndMonth = EndMonth,
                 Status = SeasonParkingPass.PassStatus.Valid,
                 Type = SeasonParkingPass.PassType.Monthly,
                 AssociatedUser = this
@@ -146,8 +136,8 @@ namespace ConsoleApp3
             SeasonParkingPass userSeasonParkingPass = new SeasonParkingPass
             {
                 UniquePassNumber = uniquePassNumber,
-                StartMonth = startMonth,
-                EndMonth = endMonth,
+                StartMonth = StartMonth,
+                EndMonth = EndMonth,
                 Status = SeasonParkingPass.PassStatus.Valid,
                 Type = SeasonParkingPass.PassType.Monthly,
                 AssociatedUser = this

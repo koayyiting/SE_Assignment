@@ -12,6 +12,8 @@ namespace ConsoleApp3
         {
             pass = p;
         }
+        
+
 
         public void Terminate(SeasonParkingPass pass)
         {
@@ -122,31 +124,43 @@ namespace ConsoleApp3
             }
         }
 
-        public void Renew(SeasonParkingPass context)
+        public void Renew(SeasonParkingPass userPass)
         {
             //Have not implemented Use Case Desc alternate flow
+            DateTime CurrentEndMonth = userPass.EndMonth;
+            Console.WriteLine(CurrentEndMonth);
 
+            //Step 3
             Console.WriteLine("Enter new end date: ");
-            DateTime endMonth = Convert.ToDateTime(Console.ReadLine()); //Not sure how converting will work with the string given
+            DateTime newEndMonth = Convert.ToDateTime(Console.ReadLine()); //Not sure how converting will work with the string given
 
             //Make Payment use case
-            Console.WriteLine("Made paymnent?");
-            bool paymentMade = Convert.ToBoolean(Console.ReadLine());
-            while (!paymentMade)
-            {
-                if (paymentMade)
-                {
-                    Console.WriteLine("Payment Made.");
-                }
-                else
-                {
-                    Console.WriteLine("Payment Required.");
-                }
-            }
+            MakePayment();
 
-            pass.EndMonth = endMonth;
+            userPass.EndMonth = newEndMonth;
 
             Console.WriteLine("Renew successful!");
+        }
+
+        //Make Payment Use Case
+        static void MakePayment()
+        {
+            string input;
+            do
+            {
+                Console.WriteLine("\nDo you want to make payment? (yes/no):");
+                input = Console.ReadLine().ToLower();
+            } while (input != "yes" && input != "no");
+
+            if (input == "yes")
+            {
+                Console.WriteLine("Payment successful!");
+                // Additional payment processing logic can be added here
+            }
+            else
+            {
+                Console.WriteLine("Payment cancelled.");
+            }
         }
 
         public void refundPayment(double refundAmt)

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NP ICT YEAR 3\\NP ICT SEM 2\\SE\\Assignment\\GitHub\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj": {}
+    "C:\\Users\\User\\Documents\\ICT Work\\Year 3 Sem 2\\SE\\ASG\\Programming\\Github PRG\\SE_Assignment\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj": {}
   },
   "projects": {
-    "D:\\NP ICT YEAR 3\\NP ICT SEM 2\\SE\\Assignment\\GitHub\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj": {
+    "C:\\Users\\User\\Documents\\ICT Work\\Year 3 Sem 2\\SE\\ASG\\Programming\\Github PRG\\SE_Assignment\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NP ICT YEAR 3\\NP ICT SEM 2\\SE\\Assignment\\GitHub\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\ICT Work\\Year 3 Sem 2\\SE\\ASG\\Programming\\Github PRG\\SE_Assignment\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj",
         "projectName": "ConsoleApp3",
-        "projectPath": "D:\\NP ICT YEAR 3\\NP ICT SEM 2\\SE\\Assignment\\GitHub\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj",
-        "packagesPath": "C:\\Users\\koayy\\.nuget\\packages\\",
-        "outputPath": "D:\\NP ICT YEAR 3\\NP ICT SEM 2\\SE\\Assignment\\GitHub\\ConsoleApp3\\ConsoleApp3\\obj\\",
+        "projectPath": "C:\\Users\\User\\Documents\\ICT Work\\Year 3 Sem 2\\SE\\ASG\\Programming\\Github PRG\\SE_Assignment\\ConsoleApp3\\ConsoleApp3\\ConsoleApp3.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\ICT Work\\Year 3 Sem 2\\SE\\ASG\\Programming\\Github PRG\\SE_Assignment\\ConsoleApp3\\ConsoleApp3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\koayy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,23 +45,16 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.31, 3.1.31]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     }
