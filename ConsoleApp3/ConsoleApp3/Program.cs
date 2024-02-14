@@ -31,19 +31,25 @@ namespace ConsoleApp3
                 }
                 else if (option == 4)
                 {
-                    Console.WriteLine("Transfer Season Pass");
+                    DateTime date1 = new DateTime(2012, 12, 25, 10, 30, 50);
+                    DateTime date2 = new DateTime(2012, 12, 25, 11, 45, 10);
+                    User student = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Student");
+                    Vehicle vehicle = new Vehicle("SCA123B", "12345678", "Car");
+                    SeasonParkingPass userPass = student.GetSeasonParkingPass();
+                    userPass.AssociatedVehicle = vehicle;
+
+                    userPass.State.Transfer(userPass);
                 }
                 else if (option == 5)
                 {
-                    User user_monthly = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1));
+                    User user_monthly = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
                     SeasonParkingPass userSeasonPass_monthly = user_monthly.GetSeasonParkingPass();
 
-                    User user_daily = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1));
+                    User user_daily = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
                     SeasonParkingPass userSeasonPass_daily = user_daily.GetSeasonParkingPass();
                     userSeasonPass_daily.Type = SeasonParkingPass.PassType.Daily;
 
                     Terminate(userSeasonPass_monthly, userSeasonPass_daily);
-                    //pass.State.Terminate(pass);
                 }
                 else if (option == 6)
                 {
@@ -82,6 +88,36 @@ namespace ConsoleApp3
                   
                     }
 
+                }
+                else if (option == 7)
+                {
+                    // sample data
+                    DateTime date1 = new DateTime(2012, 12, 25, 10, 30, 50);
+                    DateTime date2 = new DateTime(2012, 12, 25, 11, 45, 10);
+                    ParkingRecord pr1 = new ParkingRecord("1234", date1, date2, "monster truck", -1, 30);
+                    ParkingRecord pr2 = new ParkingRecord("1235", date1, date2, "monster truck", -1, 50);
+                    ParkingRecord pr3 = new ParkingRecord("1236", date1, date2, "monster truck", -1, 60);
+                    ParkingRecord pr4 = new ParkingRecord("1237", date1, date2, "monster truck", -1, 20);
+                    ParkingRecord pr5 = new ParkingRecord("1238", date1, date2, "monster truck", -1, 52);
+                    User staff = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Staff");
+                    User student = new User("Terrence", "S10223166H", "Talan", "03012004", 98710557, date1, date2, "Student");
+                    User_ParkingRecord upr1 = new User_ParkingRecord(staff, pr1, date1, date2);
+                    User_ParkingRecord upr2 = new User_ParkingRecord(student, pr2, date1, date2);
+                    User_ParkingRecord upr3 = new User_ParkingRecord(staff, pr3, date1, date2);
+                    User_ParkingRecord upr4 = new User_ParkingRecord(student, pr4, date1, date2);
+                    User_ParkingRecord upr5 = new User_ParkingRecord(staff, pr5, date1, date2);
+                    List<User_ParkingRecord> uprList = new List<User_ParkingRecord>();
+                    List<ParkingRecord> prList = new List<ParkingRecord>();
+                    // adding all user parking record to uprList
+                    uprList.Add(upr1);
+                    uprList.Add(upr2);
+                    uprList.Add(upr3);
+                    uprList.Add(upr4);
+                    uprList.Add(upr5);
+                    ConcreteAggregate ca = new ConcreteAggregate(uprList);
+
+                    // call iterator function
+                    GenerateReport(ca, uprList);
                 }
                 else if (option == 0)
                 {
@@ -397,6 +433,46 @@ namespace ConsoleApp3
             }
         }
 
+        // Option 7: Iterator Design Pattern - Financial Report
+        static void GenerateReport(ConcreteAggregate ca, List<User_ParkingRecord> userParkingRecordList)
+        {
+            Console.WriteLine("\nMonthly Financial Report: ");
+            Iterator Iterator = ca.createIterator(userParkingRecordList);
+            Iterator staffIterator = ca.createStaffIterator(userParkingRecordList);
+            Iterator studentIterator = ca.createStudentIterator(userParkingRecordList);
+            double total = 0;
+            double studentTotal = 0;
+            double staffTotal = 0;
+
+            while (Iterator.hasNext())
+            {
+                User_ParkingRecord pr = Iterator.next();
+                total += pr.ParkingRecord.AmountCharged;
+            }
+            Console.Write("All Vehicles: $");
+            Console.WriteLine(total);
+            while (staffIterator.hasNext())
+            {
+                User_ParkingRecord pr = staffIterator.next();
+                if (pr != null)
+                {
+                    staffTotal += pr.ParkingRecord.AmountCharged;
+                }
+            }
+            Console.Write("Staff Vehicles: $");
+            Console.WriteLine(staffTotal);
+            while (studentIterator.hasNext())
+            {
+                User_ParkingRecord pr = studentIterator.next();
+                if (pr != null)
+                {
+                    studentTotal += pr.ParkingRecord.AmountCharged;
+                }
+            }
+            Console.Write("Student Vehicles: $");
+            Console.WriteLine(studentTotal);
+        }
+
         static string GenerateUniquePassNumber()
         {
             // This is a simplified method to generate a unique pass number
@@ -413,6 +489,7 @@ namespace ConsoleApp3
             Console.WriteLine("[4] Transfer Season Pass");
             Console.WriteLine("[5] Terminate Season Pass");
             Console.WriteLine("[6] Strategy Design Pattern - Parking Charges");
+            Console.WriteLine("[7] Iterator Design Pattern - Financial Report");
             Console.WriteLine("[0] Exit");
             Console.WriteLine("---------------------------------------------");
         }

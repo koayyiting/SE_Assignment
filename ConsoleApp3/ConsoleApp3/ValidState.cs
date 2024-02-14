@@ -97,10 +97,29 @@ namespace ConsoleApp3
             }
         }
 
-        public void Transfer(SeasonParkingPass context, Vehicle v1, Vehicle v2)
+        public void Transfer(SeasonParkingPass userPass)
         {
-            // Implement transfer behavior for valid state
-            Console.WriteLine("Cannot transfer a terminated season parking pass.");
+            bool sameType = false;
+            Console.Write("license plate number: ");
+            string licensePlate = Console.ReadLine();
+            Console.Write("IU number: ");
+            string IU = Console.ReadLine();
+            while (!sameType)
+            {
+                Console.Write("Vehicle Type: ");
+                string vType = Console.ReadLine();
+                if (vType == userPass.AssociatedVehicle.VehicleType)
+                {
+                    Console.WriteLine("Transfer Successful");
+                    userPass.AssociatedVehicle.LicensePlateNumber = licensePlate;
+                    userPass.AssociatedVehicle.IUNumber = IU;
+                    sameType= true;
+                }
+                else
+                {
+                    Console.WriteLine("need to be same type");
+                }
+            }
         }
 
         public void Renew(SeasonParkingPass context)

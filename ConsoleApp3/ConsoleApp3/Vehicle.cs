@@ -6,8 +6,13 @@ namespace ConsoleApp3
     {
         // Attributes
         private string licensePlateNumber;
-        private string IUNumber;
+        private string iUNumber;
         private string vehicleType;
+
+        public string LicensePlateNumber { get; set; }
+        public string IUNumber { get; set; }
+        public string VehicleType { get; set; }
+
 
         //Association
         private SeasonParkingPass parkingPass;
@@ -15,9 +20,9 @@ namespace ConsoleApp3
         // Constructor
         public Vehicle(string licensePlateNumber, string IUNumber, string vehicleType)
         {
-            this.licensePlateNumber = licensePlateNumber;
+            this.LicensePlateNumber = licensePlateNumber;
             this.IUNumber = IUNumber;
-            this.vehicleType = vehicleType;
+            this.VehicleType = vehicleType;
         }
 
         // Associate a SeasonParkingPass with this Vehicle
@@ -29,7 +34,7 @@ namespace ConsoleApp3
         // Get vehicle information
         public string GetVehicleInfo()
         {
-            return $"License Plate Number: {licensePlateNumber}\nIU Number: {IUNumber}\nVehicle Type: {vehicleType}";
+            return $"License Plate Number: {LicensePlateNumber}\nIU Number: {IUNumber}\nVehicle Type: {VehicleType}";
         }
 
         // Register vehicle in the system

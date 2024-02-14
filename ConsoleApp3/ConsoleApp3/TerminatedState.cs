@@ -22,7 +22,7 @@ namespace ConsoleApp3
             Console.WriteLine("The Season Pass is already in terminated state.");
         }
 
-        public void Transfer(SeasonParkingPass context, Vehicle v1, Vehicle v2)
+        public void Transfer(SeasonParkingPass context)
         {
             throw new NotImplementedException();
         }

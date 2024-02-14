@@ -14,6 +14,17 @@ namespace ConsoleApp3
         private DateTime startMonth;
         private DateTime endMonth;
         private string paymentMode = "credit";
+        private string userType;
+
+        public string Name { get; set; }
+        public string UserID { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public int MobileNumber { get; set; }
+        public DateTime StartMonth { get; set; }
+        public DateTime EndMonth { get; set; }
+        public string PaymentMode { get; set; }
+        public string UserType { get; set; }
 
         // Association
         private SeasonParkingPass seasonParkingPass;
@@ -22,15 +33,16 @@ namespace ConsoleApp3
 
 
         // Constructor
-        public User(string name, string userID, string username, string password, int mobileNumber, DateTime startMonth, DateTime endMonth)
+        public User(string name, string userID, string username, string password, int mobileNumber, DateTime startMonth, DateTime endMonth, string userType)
         {
-            this.name = name;
-            this.userID = userID;
-            this.username = username;
-            this.password = password;
-            this.mobileNumber = mobileNumber;
-            this.startMonth = startMonth;
-            this.endMonth = endMonth;
+            this.Name = name;
+            this.UserID = userID;
+            this.Username = username;
+            this.Password = password;
+            this.MobileNumber = mobileNumber;
+            this.StartMonth = startMonth;
+            this.EndMonth = endMonth;
+            this.UserType = userType;
             this.user_parkingRecords = new List<User_ParkingRecord>();
         }
 

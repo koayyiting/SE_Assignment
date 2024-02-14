@@ -33,10 +33,8 @@ namespace ConsoleApp3
         public string UniquePassNumber { get; set; }
         public DateTime StartMonth { get; set; }
         public DateTime EndMonth { get; set; }
-        //public string Status { get; set; }
         public PassStatus Status { get; set; }
         public PassType Type { get; set; }
-        //public string Type { get; set; }
         public User AssociatedUser { get; set; }
         public Vehicle AssociatedVehicle { get; set; }
 

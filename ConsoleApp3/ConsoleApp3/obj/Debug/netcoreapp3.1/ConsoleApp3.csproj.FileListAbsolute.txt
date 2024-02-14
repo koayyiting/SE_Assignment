@@ -26,3 +26,17 @@ c:\Users\chuag\SE_Assignment\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\Con
 c:\Users\chuag\SE_Assignment\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.dll
 c:\Users\chuag\SE_Assignment\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.pdb
 c:\Users\chuag\SE_Assignment\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.genruntimeconfig.cache
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\bin\Debug\netcoreapp3.1\ConsoleApp3.exe
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\bin\Debug\netcoreapp3.1\ConsoleApp3.deps.json
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\bin\Debug\netcoreapp3.1\ConsoleApp3.runtimeconfig.json
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\bin\Debug\netcoreapp3.1\ConsoleApp3.runtimeconfig.dev.json
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\bin\Debug\netcoreapp3.1\ConsoleApp3.dll
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\bin\Debug\netcoreapp3.1\ConsoleApp3.pdb
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.csproj.AssemblyReference.cache
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.GeneratedMSBuildEditorConfig.editorconfig
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.AssemblyInfoInputs.cache
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.AssemblyInfo.cs
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.csproj.CoreCompileInputs.cache
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.dll
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.pdb
+D:\NP ICT YEAR 3\NP ICT SEM 2\SE\Assignment\GitHub\ConsoleApp3\ConsoleApp3\obj\Debug\netcoreapp3.1\ConsoleApp3.genruntimeconfig.cache

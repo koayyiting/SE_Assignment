@@ -22,7 +22,7 @@ namespace ConsoleApp3
             throw new NotImplementedException();
         }
 
-        public void Transfer(SeasonParkingPass context, Vehicle v1, Vehicle v2)
+        public void Transfer(SeasonParkingPass context)
         {
             throw new NotImplementedException();
         }
