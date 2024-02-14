@@ -6,6 +6,15 @@ namespace ConsoleApp3
     public class User
     {
         //Attributes
+        private string name;
+        private string userID;
+        private string username;
+        private string password;
+        private int mobileNumber;
+        private DateTime startMonth;
+        private DateTime endMonth;
+        private string paymentMode = "credit";
+
         public string Name { get; set; }
         public string UserID { get; set; }
         public string Username { get; set; }
