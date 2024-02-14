@@ -67,17 +67,17 @@ namespace ConsoleApp3
                         if (chargeOption == 1)
                         {
                             ParkingRecord record = new ParkingRecord("12345678", new DateTime(2024, 2, 13, 7, 30, 0), new DateTime(2024, 2, 13, 17, 30, 0), "Car", 1, 0);
-                            parkigCharge(record);
+                            parkingCharge(record);
                         }
                         else if (chargeOption == 2)
                         {
                             ParkingRecord record = new ParkingRecord("12345678", new DateTime(2024, 2, 13, 9, 30, 0), new DateTime(2024, 2, 13, 20, 30, 0), "Motorbike", 0, 0);
-                            parkigCharge(record);
+                            parkingCharge(record);
                         }
                         else if (chargeOption == 3)
                         {
                             ParkingRecord record = new ParkingRecord("12345678", new DateTime(2024, 2, 13, 15, 30, 0), new DateTime(2024, 2, 13, 21, 30, 0), "Truck", -1, 0);
-                            parkigCharge(record);
+                            parkingCharge(record);
                         }
                         else if (chargeOption == 0)
                         {
@@ -393,6 +393,7 @@ namespace ConsoleApp3
             {
                 Season_Pass_Monthly monthlyStrategy = new Season_Pass_Monthly();
                 ParkingCharge pc = new ParkingCharge(monthlyStrategy, 0);
+                record.ParkingCharge = pc;
                 return pc.calculateCharge(record);
             }
             else if (record.SeasonPassType == 0)
@@ -402,6 +403,7 @@ namespace ConsoleApp3
 
                 Season_Pass_Daily dailyStrategy = new Season_Pass_Daily(limit);
                 ParkingCharge pc = new ParkingCharge(dailyStrategy, rate);
+                record.ParkingCharge = pc;
                 return pc.calculateCharge(record);
             }
             else if (record.SeasonPassType == -1)
@@ -410,13 +412,14 @@ namespace ConsoleApp3
 
                 PerMinuteCharge perMinCharge = new PerMinuteCharge();
                 ParkingCharge pc = new ParkingCharge(perMinCharge, rate);
+                record.ParkingCharge = pc;
                 return pc.calculateCharge(record);
             }
             return -1;
                 
         }
 
-        public static void parkigCharge(ParkingRecord record)
+        public static void parkingCharge(ParkingRecord record)
         {
             Console.WriteLine("\nParking Record Details:");
             Console.WriteLine("Unique Pass Number: " + record.UniqueParkingNumber);
@@ -425,6 +428,7 @@ namespace ConsoleApp3
             Console.WriteLine("Vehicle Type: " + record.VehicleType);
             Console.WriteLine();
             double amt = calculate(record);
+            record.CaptureParkingRecord();
             if (amt == -1)
             {
                 Console.WriteLine("Error in Calculate Parking Charge Function");

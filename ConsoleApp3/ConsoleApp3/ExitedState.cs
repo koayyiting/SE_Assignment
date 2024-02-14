@@ -72,10 +72,10 @@ namespace ConsoleApp3
                         int monthsLeft = ((pass.StartMonth.Year - DateTime.Now.Year) * 12) + pass.EndMonth.Month - DateTime.Now.Month;
 
                         // System calculates refund amount.
-                        double refundAmt = monthsLeft * 50; // I need a monthly season price for this
+                        double refundAmt = monthsLeft * pass.Price; // I need a monthly season price for this
 
                         // System refunds amount to ICTP User.
-                        refundPayment(refundAmt);
+                        pass.refundPayment(refundAmt);
 
                         // System display message daily pass to be terminated.
                         Console.WriteLine("Monthly Pass to be terminated..");
@@ -124,11 +124,6 @@ namespace ConsoleApp3
                     Console.WriteLine("need to be same type");
                 }
             }
-        }
-
-        public void refundPayment(double refundAmt)
-        {
-            Console.WriteLine("Refunding Remaining Months Payment: $" + refundAmt);
         }
     }
 }
