@@ -146,8 +146,8 @@ namespace ConsoleApp3
             SeasonParkingPass userSeasonParkingPass = new SeasonParkingPass
             {
                 UniquePassNumber = uniquePassNumber,
-                StartMonth = startMonth,
-                EndMonth = endMonth,
+                StartMonth = StartMonth,
+                EndMonth = EndMonth,
                 Status = SeasonParkingPass.PassStatus.Valid,
                 Type = SeasonParkingPass.PassType.Monthly,
                 AssociatedUser = this

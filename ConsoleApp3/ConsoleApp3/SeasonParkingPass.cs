@@ -28,6 +28,7 @@ namespace ConsoleApp3
         private string type;
         private User associatedUser;
         private Vehicle associatedVehicle;
+        private double price;
 
         // Attributes 
         public string UniquePassNumber { get; set; }
@@ -35,6 +36,7 @@ namespace ConsoleApp3
         public DateTime EndMonth { get; set; }
         public PassStatus Status { get; set; }
         public PassType Type { get; set; }
+        public double Price { get; set; }
         public User AssociatedUser { get; set; }
         public Vehicle AssociatedVehicle { get; set; }
 
@@ -58,26 +60,16 @@ namespace ConsoleApp3
             State = ValidState;
         }
 
-        public bool RenewPass()
+        public bool renewPass()
         {
             // Logic to renew pass
             return true; // Return true if renewed successfully, false otherwise
         }
 
-        public bool TransferPass(User newOwner)
-        {
-            // Logic to transfer pass to a new user
-            return true; // Return true if transferred successfully, false otherwise
-        }
 
-        public void TerminatePass()
+        public void refundPayment(double refundAmt)
         {
-            // Logic to terminate pass
-        }
-
-        public void RefundPayment()
-        {
-            // Logic to refund payment
+            Console.WriteLine("Refunding Remaining Months Payment: $" + refundAmt);
         }
     }
 }

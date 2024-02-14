@@ -24,6 +24,8 @@ namespace ConsoleApp3
         private CarPark carPark; // One ParkingRecord belongs to one CarPark
         private ParkingCharge parkingCharge; // One ParkingRecord has one ParkingChargeStrategy
 
+        public ParkingCharge ParkingCharge { get; set; }
+
         // Association: One ParkingRecord can have 0 or more User_ParkingRecord
         private List<User_ParkingRecord> user_ParkingRecords;
 
@@ -46,23 +48,23 @@ namespace ConsoleApp3
         }
 
         // Operation to capture parking record and return the amount charged
-        public double CaptureParkingRecord(DateTime entryDateTime, DateTime exitDateTime, string vehicleType, int seasonPassType)
+        public double CaptureParkingRecord()
         {
             // Logic to calculate amount charged based on parking duration, vehicle type, etc.
             // This could involve using the ParkingChargeStrategy associated with this ParkingRecord.
             // For now, let's assume a basic calculation.
-            double parkingCharge = CalculateParkingCharge(entryDateTime, exitDateTime);
+            double parkingCharge = CalculateParkingCharge();
             this.amountCharged = parkingCharge;
             return parkingCharge;
         }
 
         // Method to calculate the parking charge
-        private double CalculateParkingCharge(DateTime entryDateTime, DateTime exitDateTime)
+        private double CalculateParkingCharge()
         {
             // Check if ParkingChargeStrategy is set
-            if (parkingCharge != null)
+            if (ParkingCharge != null)
             {
-                return parkingCharge.calculateCharge(this);
+                return ParkingCharge.calculateCharge(this);
             }
             else
             {
