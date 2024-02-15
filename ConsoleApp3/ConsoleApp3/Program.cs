@@ -15,11 +15,11 @@ namespace ConsoleApp3
             SeasonParkingPass userPass = student.GetSeasonParkingPass();
             Vehicle vehicle = new Vehicle("SCA123B", "12345678", "Car");
 
-            User user_monthly = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
+            User user_monthly = new User("Yi Ting", "S10221765G", "yiting", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
             SeasonParkingPass userSeasonPass_monthly = user_monthly.GetSeasonParkingPass();
             userSeasonPass_monthly.Price = 50;
 
-            User user_daily = new User("Yi Ting", "S10221765G", "password", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
+            User user_daily = new User("Yi Ting", "S10221765G", "yiting", "password", 90000000, new DateTime(2024, 2, 1), new DateTime(2024, 5, 1), "Student");
             SeasonParkingPass userSeasonPass_daily = user_daily.GetSeasonParkingPass();
             userSeasonPass_daily.Type = SeasonParkingPass.PassType.Daily;
 

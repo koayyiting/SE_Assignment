@@ -77,6 +77,9 @@ namespace ConsoleApp3
                         // System refunds amount to ICTP User.
                         pass.refundPayment(refundAmt);
 
+                        //System increases the number of available monthly season pass by 1
+                        addVehicleLimit();
+
                         // System display message daily pass to be terminated.
                         Console.WriteLine("Monthly Pass to be terminated..");
                     }
@@ -124,6 +127,11 @@ namespace ConsoleApp3
                     Console.WriteLine("need to be same type");
                 }
             }
+        }
+
+        static void addVehicleLimit()
+        {
+            Console.WriteLine("Vehicle Limit +1");
         }
     }
 }
