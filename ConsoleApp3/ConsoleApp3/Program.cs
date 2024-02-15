@@ -235,14 +235,6 @@ namespace ConsoleApp3
             Console.WriteLine("Use case end.");
         }
 
-        static void SubmitApplication(string passType, string name, string studentOrStaffID, string username, string password, int mobileNumber, DateTime startMonth, DateTime endMonth, string paymentMode, string licensePlateNumber, string iuNumber, string vehicleType)
-        {
-            Console.WriteLine("\nSubmitting Application...");
-            // Here you would typically submit the application details to a database or API
-
-            // Additional processing can be done here, such as sending confirmation emails or messages
-        }
-
         // Functions
         static void DisplaySeasonPassOptions()
         {
@@ -265,6 +257,34 @@ namespace ConsoleApp3
             return Console.ReadLine();
         }
 
+        static void SubmitApplication(string passType, string name, string studentOrStaffID, string username, string password, int mobileNumber, DateTime startMonth, DateTime endMonth, string paymentMode, string licensePlateNumber, string iuNumber, string vehicleType)
+        {
+            Console.WriteLine("\nSubmitting Application...");
+            // Here you would typically submit the application details to a database or API
+
+
+            // Create user applying for season parking
+            User user = new User(name, studentOrStaffID, username, password, mobileNumber, startMonth, endMonth, "Student");
+
+            // Apply for Season Parking by calling User class 
+            // Apply for season parking
+            if (user.ApplyForSeasonParking() != "Failed" && user.ApplyForSeasonParking() != "Monthly Pass Unavaliable")
+            {
+                // If application is successful, print the unique pass number
+                Console.WriteLine("Season Parking Pass Applied Successfully!");
+                Console.WriteLine("Unique Pass Number: " + user.SeasonParkingPass.UniquePassNumber);
+            }
+            else
+            {
+                // If application is unsuccessful, print a message
+                Console.WriteLine("Failed to apply for Season Parking Pass.");
+            }
+
+            Console.WriteLine("Application submitted successfully!");
+            // Additional processing can be done here, such as sending confirmation emails or messages
+        }
+
+        // Make Payment use case (simple depiction of MakePayment use case, not exhaustive)
         static void MakePayment()
         {
             string input;
@@ -285,6 +305,7 @@ namespace ConsoleApp3
             }
         }
 
+        // Front-end user input validation 
         static string GetValidInput(string prompt)
         {
             string input;
@@ -319,6 +340,7 @@ namespace ConsoleApp3
             } while (!DateTime.TryParse(input, out result)); // Validates for DateTime input
             return result;
         }
+
 
         // Option 5: Terminate Season Pass
         public static void displayMenu_Terminate()
